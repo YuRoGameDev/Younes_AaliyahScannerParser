@@ -60,9 +60,10 @@ public class TokenStream {
 				while (!isEndOfLine(nextChar) && !isEof) {
 					nextChar = readChar();
 				}
-				if (isEof) { // Break out if EOF is reached within a comment
-					return t;
-				}
+				skipWhiteSpace();
+				// if (isEof) { // Break out if EOF is reached within a comment
+				// 	return t;
+				// }
 
 			} else {
 				// A slash followed by anything else must be an operator.
@@ -234,6 +235,7 @@ public class TokenStream {
 			isEof = true;
 			return (char) 0;
 		}
+	
 		return (char) i;
 	}
 
